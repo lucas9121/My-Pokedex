@@ -15,8 +15,7 @@ class Index extends React.Component {
                 <ul>
                     {
                         pokemon.map((poke, i) => {
-                            console.log(poke.name)
-                            const capitalize = poke.name.toString().split('')
+                            const capitalize = poke.name.split('')
                             capitalize[0] = capitalize[0].toUpperCase()
                             const pokeName = capitalize.join('')
                             return(
