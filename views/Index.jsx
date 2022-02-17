@@ -19,6 +19,9 @@ class Index extends React.Component {
         return(
             <div style={myStyle}>
                 <h1>Check out all the Pokemon!</h1>
+                <nav>
+                    <a href="/pokemon/new">Register Pokemon</a>
+                </nav>
                 <ul style={listStyle}>
                     {
                         pokemon.map((poke, i) => {
@@ -26,7 +29,11 @@ class Index extends React.Component {
                             capitalize[0] = capitalize[0].toUpperCase()
                             const pokeName = capitalize.join('')
                             return(
-                                <li><img src={poke.sprite} alt={pokeName}/><a href={`/pokemon/${i}`}>{(i+1) + ' - ' + pokeName}</a></li>
+                                <div>
+                                    <img src={`https://img.pokemondb.net/sprites/silver/normal/${poke.name}.png`} alt={pokeName}/>
+                                    <li>{`${poke.type}`}</li>
+                                    <li key={`${poke._id}`}><a href={`/pokemon/${poke._id}`}>{(i+1) + ' - ' + pokeName}</a></li>
+                                </div>
                             )
                         })
                     }

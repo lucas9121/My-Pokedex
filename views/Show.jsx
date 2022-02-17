@@ -19,7 +19,7 @@ class Show extends React.Component {
                    <a href="/pokemon">Back</a> 
                 </nav>
                 <h2>{pokeName}</h2>
-                <img src={poke.img + '.jpg'} alt={poke.name}  />
+                <img src={`http://img.pokemondb.net/artwork/${poke.name}` + '.jpg'} alt={poke.name}  />
             </div>
         )
     }
