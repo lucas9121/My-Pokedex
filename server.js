@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Pokemon App!')
+    res.send('<h1>Welcome to the Pokemon App!</h1> <a href=/pokemon>Pokedex</a>')
 })
 
 //INDEX
