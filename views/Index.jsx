@@ -5,14 +5,29 @@ const pageStyle = {
     color: '#000000',
     backgroundColor: '#ffffff',
     textAlign: 'center',
+    maxWidth: '800px',
+    margin: '0 auto',
 };
-const pokedexStyle = {
+const ulStyle = {
     // border: 'dotted',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '30px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))',
+    gridGap: '1.5em 0.5em',
+    padding: '0',
     listStyleType: 'none',
-    
+}
+const liStyle = {
+    border: 'solid black'
+}
+const navStyle = {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    backgroundColor: 'rgb(51, 153, 255, 0.4)',
+    margin: '0 auto 50px',
+    maxWidth: '45%',
+    minWidth: 'auto',
+    padding: '3px',
+    borderRadius: '4px'
 }
 const linkStyle = {
     color: 'blue',
@@ -24,11 +39,12 @@ class Index extends React.Component {
         const pokemon = this.props.pokemon
         return(
             <div style={pageStyle}>
-                <h1>Check out all the Pokemon!</h1>
-                <nav>
-                    <a style={linkStyle} href="/pokemon/new">Register Pokemon</a>
+                <h1>Check out all the Pokémon!</h1>
+                <nav style={navStyle}>
+                    <a style={linkStyle} href="/pokemon/new">Register Pokémon</a>
+                    <a style={linkStyle} href="/type">Pokémon Types</a>
                 </nav>
-                <ul style={pokedexStyle}>
+                <ul style={ulStyle}>
                     {
                         pokemon.map((poke, i) => {
                             //capitalize first letter only
@@ -61,13 +77,14 @@ class Index extends React.Component {
                                 pokeType === 'Steel'? '#aab':
                                 pokeType === 'Fairy'? '#e9e':
                                 'black',
+                                textDecoration: 'none'
                             }
                             return(
                                 <div>
                                     <img src={`https://img.pokemondb.net/sprites/silver/normal/${lowerCaseName}.png`} alt={pokeName}/>
                                     <li>#{i < 9? '00' + (i+1): i < 99? '0' + (i+1): (i+1)}</li>
-                                    <li key={`${poke._id}`}><a style={linkStyle} href={`/pokemon/${poke._id}`}>{pokeName === 'Nidoran-f'?'Nidoran': pokeName === 'Nidoran-m'? 'Nidoran': pokeName}</a></li>
-                                    <li key={`${poke._id}`}><a style={typeColor}> {`${pokeType}`}</a></li>
+                                    <li key={`${poke._id}`}><a style={linkStyle} href={`/pokemon/${poke._id}`}>{pokeName === 'Nidoran-f'?'Nidoran♀': pokeName === 'Nidoran-m'? 'Nidoran♂': pokeName}</a></li>
+                                    <li key={`${poke._id}`}><a style={typeColor} href={`/type`}> {`${pokeType}`}</a></li>
                                 </div>
                             )
                         })

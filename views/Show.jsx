@@ -47,7 +47,7 @@ class Show extends React.Component {
                 <nav>
                    <a style={linkStyle} href="/pokemon">Back</a> 
                 </nav>
-                <h2>{pokeName === 'Nidoran-f'?'Nidoran': pokeName === 'Nidoran-m'? 'Nidoran': pokeName}</h2>
+                <h2>{pokeName === 'Nidoran-f'?'Nidoran ♀': pokeName === 'Nidoran-m'? 'Nidoran ♂': pokeName}</h2>
                 <img src={`http://img.pokemondb.net/artwork/${lowerCaseName}` + '.jpg'} alt={poke.name}  />
                 <p>Type: {pokeType}</p>
             </div>

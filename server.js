@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const app = express()
 const port = 3000
 const Pokemon = require('./models/pokemon.js')
+const pokemonTypes = require('./models/pokemonTypes.js')
 
 //MVC SETUP
 //views
@@ -23,12 +24,13 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.send('<h1>Welcome to the Pokemon App!</h1> <a href=/pokemon>Pokedex</a>')
+    res.send('<h1>Welcome to the Pokémon App!</h1> <a href=/pokemon>Pokedex</a> <br> <a href=/type>Pokémon Types</a>')
 })
 
 //INDEX
 app.get('/pokemon', (req, res) => {
     // res.render('Index', {pokemon})
+    // Pokemon.findOneAndDelete('621172f139be66d1abf72d6b')
     Pokemon.find({}, (err, foundPokemon) => {
         if(err){ 
             res.status(400).send(err)
@@ -38,6 +40,12 @@ app.get('/pokemon', (req, res) => {
             })
         }
     })
+})
+
+
+/////////////////Not working////////////////////
+app.get('/type', (req,res) => {
+    res.render('type/Index', {pokemonTypes})
 })
 
 
