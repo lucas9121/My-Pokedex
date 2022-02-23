@@ -89,6 +89,7 @@ app.get('/pokemon/:id', (req, res) => {
 app.get('/type/:typeName', (req, res) => {
     Pokemon.find({type: req.params.typeName.toLowerCase()}, (err, foundPokemon) => {
         res.render('type/Show', {
+            //https://www.codegrepper.com/code-examples/javascript/findIndexOf
             pokemonType: pokemonTypes[pokemonTypes.findIndex(obj => obj.name === req.params.typeName)],
             typePoke: foundPokemon
             })
