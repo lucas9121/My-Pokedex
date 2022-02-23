@@ -28,24 +28,27 @@ app.get('/', (req, res) => {
 })
 
 //INDEX
+
+// Pokemon.findByIdAndUpdate("6215827b9c6b57f904b04a32", {name: 'seel'}, {new: true}, (pokemon) => {
+//     console.log(pokemon)
+// })
+
 app.get('/pokemon', (req, res) => {
     // res.render('Index', {pokemon})
-    // Pokemon.findOneAndDelete('621172f139be66d1abf72d6b')
     Pokemon.find({}, (err, foundPokemon) => {
         if(err){ 
             res.status(400).send(err)
         } else {
             res.render('Index', {
-                pokemon: foundPokemon
+                pokemon: foundPokemon,
             })
         }
     })
 })
 
-
-/////////////////Not working////////////////////
 app.get('/type', (req,res) => {
     res.render('type/Index', {pokemonTypes})
+   
 })
 
 
@@ -67,7 +70,7 @@ app.post('/pokemon', (req, res) => {
 })
 
 
-//EDIT
+//SHOW
 app.get('/pokemon/:id', (req, res) => {
     // res.render('Show', {
     //     poke: pokemon[req.params.id]
@@ -80,6 +83,15 @@ app.get('/pokemon/:id', (req, res) => {
                 poke: foundPokemon
             })
         }
+    })
+});
+
+app.get('/type/:typeName', (req, res) => {
+    Pokemon.find({type: req.params.typeName.toLowerCase()}, (err, foundPokemon) => {
+        res.render('type/Show', {
+            pokemonType: pokemonTypes[pokemonTypes.findIndex(obj => obj.name === req.params.typeName)],
+            typePoke: foundPokemon
+            })
     })
 })
 

@@ -1,4 +1,4 @@
-const React = require('react')
+const React = require('react');
 
 //CSS
 const pageStyle = {
@@ -9,7 +9,6 @@ const pageStyle = {
     margin: '0 auto',
 };
 const ulStyle = {
-    // border: 'dotted',
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))',
     gridGap: '1.5em 0.5em',
@@ -84,7 +83,7 @@ class Index extends React.Component {
                                     <img src={`https://img.pokemondb.net/sprites/silver/normal/${lowerCaseName}.png`} alt={pokeName}/>
                                     <li>#{i < 9? '00' + (i+1): i < 99? '0' + (i+1): (i+1)}</li>
                                     <li key={`${poke._id}`}><a style={linkStyle} href={`/pokemon/${poke._id}`}>{pokeName === 'Nidoran-f'?'Nidoran♀': pokeName === 'Nidoran-m'? 'Nidoran♂': pokeName}</a></li>
-                                    <li key={`${poke._id}`}><a style={typeColor} href={`/type`}> {`${pokeType}`}</a></li>
+                                    <li key={`${poke._id}`}><a style={typeColor} href={`/type/${pokeType}`}> {`${pokeType}`}</a></li>
                                 </div>
                             )
                         })
