@@ -38,9 +38,6 @@ const pStyle = {
 class Index extends React.Component {
     render(){
         const pokemonTypes = this.props.pokemonTypes
-        console.log('New console!!!!!!!!!!!!!!!!!!!')
-        console.log(pokemonTypes)
-        console.log(pokemonTypes[6].name)
         return(
             <div style={pageStyle}>
                 <h1>Pokémon Types</h1>
