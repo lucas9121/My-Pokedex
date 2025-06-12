@@ -82,7 +82,13 @@ class Index extends React.Component {
                                 <div>
                                     <img src={`https://img.pokemondb.net/sprites/silver/normal/${lowerCaseName}.png`} alt={pokeName}/>
                                     <li>#{i < 9? '00' + (i+1): i < 99? '0' + (i+1): (i+1)}</li>
-                                    <li key={`${poke._id}`}><a style={linkStyle} href={`/pokemon/${poke._id}`}>{pokeName === 'Nidoran-f'?'Nidoran♀': pokeName === 'Nidoran-m'? 'Nidoran♂': pokeName}</a></li>
+                                    <li key={`${poke._id}`}><a style={linkStyle} href={`/pokemon/${poke._id}`}>{
+                                        pokeName === 'Nidoran-f'?'Nidoran♀': 
+                                        pokeName === 'Nidoran-m'? 'Nidoran♂': 
+                                        pokeName === "farfetchd"? "farfetch'd":
+                                        pokeName === "mr-mime"? "Mr. Mime": 
+                                        pokeName
+                                    }</a></li>
                                     <li key={`${poke._id}`}><a style={typeColor} href={`/type/${pokeType}`}> {`${pokeType}`}</a></li>
                                 </div>
                             )
